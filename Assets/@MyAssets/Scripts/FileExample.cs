@@ -11,7 +11,8 @@ public class FileExample : MonoBehaviour
     string filePath = "C:\\\\Iker\\Prueba.txt";
     int filas;
     int columnas;
-
+    MapMatrix mapMatrix;
+    List<string> lines = new List<string>();
     // Start is called before the first frame update
     void Start()
     {
@@ -21,14 +22,29 @@ public class FileExample : MonoBehaviour
         {
             Debug.Log(line);
             matrixLine = line.ToCharArray();
-            filas = matrixLine.Length;
+            columnas = matrixLine.Length;
             for(int i = 0; i < matrixLine.Length - 2; i++)
             {
-                columnas += 1;
+                Debug.Log("Hola");
+                filas += 1;
             }
+            lines.Add(line);
             line = sr.ReadLine();
         }
         Debug.Log("Filas: " + filas + "; Columnas: " + columnas);
+        mapMatrix = new MapMatrix(filas, columnas);
         sr.Close();
+
+        for (int i = 0;i < filas; i++)
+        {
+            for (int  j = 0; j < columnas; j++)
+            {
+                mapMatrix[i, j] = Int32.Parse(lines[i][j].ToString());
+            }
+        }
+
+        Debug.Log(mapMatrix);
+
+
     }
 }
