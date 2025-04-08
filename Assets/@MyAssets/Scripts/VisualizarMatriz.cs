@@ -18,8 +18,8 @@ public class VisualizarMatriz : MonoBehaviour
         matriz[0, 1] = -1;
         matriz[0, 2] = -1;
         Debug.Log(matriz);
-        Debug.Log(matriz.GetRowCount());
-        Debug.Log(matriz.GetColumnCount());
+        //Debug.Log(matriz.GetRowCount());
+        //Debug.Log(matriz.GetColumnCount());
 
         for (int i = 0; i < matriz.GetRowCount(); i++)
         {
@@ -28,6 +28,7 @@ public class VisualizarMatriz : MonoBehaviour
                 if (matriz[i,j] == -1)
                 {
                     GameObject go = Instantiate(prefab, new Vector3(initialPosition.x + (j * interval), initialPosition.y + (i * interval), 0), Quaternion.identity);
+
                 }
             }
         }
