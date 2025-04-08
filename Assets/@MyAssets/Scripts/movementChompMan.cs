@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,31 +7,47 @@ public class movementChompMan : Movement
 {
     public override void move(int movement)
     {
-
-         switch(movement)
+        Reaction(nextObject);
+        switch (movement)
         {
             case 1:
-                nextObject = matrix.GetValue((int)position.x + 1, (int)position.y);
+                
+
 
                 break;
 
             case 2:
-                nextObject = matrix.GetValue((int)position.x, (int)position.y + 1);
 
                 break;
 
             case 3:
-                nextObject = matrix.GetValue((int)position.x - 1, (int)position.y);
 
                 break;
 
             case 4:
-                nextObject = matrix.GetValue((int)position.x, (int)position.y - 1);
 
                 break;
         }
 
     }
+
+
+    private void Reaction(Enum obj)
+    {
+        switch(obj)
+        {
+            case Casillas.Bolita:
+                Debug.Log("tremenda comida de bola");
+                break;
+
+            case Casillas.Fantasma:
+                Debug.Log("Españoles Chomp-man ha muerto");
+                break;
+
+        }
+    }
+
+    //TODO hacer metodo de muerte de chomp man(publico)
 
 
 }

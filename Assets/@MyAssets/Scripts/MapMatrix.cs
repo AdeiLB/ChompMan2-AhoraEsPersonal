@@ -2,6 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Casillas
+{
+    Vacio =0,
+    Pared = 1,
+    Bolita = 2,
+    Fantasma = 3,
+    ChompMan = 5
+}
+
+
+
+
 public class MapMatrix
 {
     private int[][] matrix;
@@ -15,6 +27,8 @@ public class MapMatrix
      * 5 = Chomp man
      * 
      */
+
+
 
     public MapMatrix(int rows, int columns)
     {
