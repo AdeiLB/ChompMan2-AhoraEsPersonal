@@ -4,9 +4,9 @@ using UnityEngine;
 
 public abstract class Movement : MonoBehaviour
 {
-    //-1 = pared 0=nada 
-    [SerializeField] private int[][] matrix;
-    private Vector2 position;
+    [SerializeField] protected MapMatrix matrix;
+    protected Vector2 position;
+    protected int nextObject;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,18 +30,21 @@ public abstract class Movement : MonoBehaviour
         {
             case 0:
                 break;
-            case 1:
-                //get de la casilla a la cual se quiere mover 
-                //checkTile(matrix.GetValue([position.x - 1],[position.y-1]));
+            case 1://arriba
+                if (checkTile(matrix.GetValue((int)position.x + 1, (int)position.y)))
+                    move(1);
                 break;
-            case 2:
-                position.y += 1;
+            case 2://Derecha
+                if(checkTile(matrix.GetValue((int)position.x , (int)position.y+1)))
+                    move(2);
                 break;
-            case 3:
-                position.x += 1;
+            case 3://Abajo
+                if (checkTile(matrix.GetValue((int)position.x - 1, (int)position.y)))
+                    move(3);
                 break;
-            case 4:
-                position.y -= 1;
+            case 4://Izquierda
+                if (checkTile(matrix.GetValue((int)position.x, (int)position.y - 1)))
+                    move(4);
                 break;
         }
 
@@ -50,7 +53,7 @@ public abstract class Movement : MonoBehaviour
 
     public bool checkTile(float tileNumber)
     {
-        if(tileNumber == -1)
+        if(tileNumber == 0)
         {
             return false;
         }
