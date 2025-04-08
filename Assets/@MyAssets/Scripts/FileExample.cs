@@ -8,32 +8,28 @@ public class FileExample : MonoBehaviour
 {
     string line;
     char[] matrixLine;
-    string filePath = "C:\\\\Iker\\Prueba.txt";
-    int filas;
-    int columnas;
-    MapMatrix mapMatrix;
+    [SerializeField] private string filePath = "\\Maps\\map1.txt";
+    private int filas;
+    private int columnas;
+    private MapMatrix mapMatrix;
     List<string> lines = new List<string>();
     // Start is called before the first frame update
     void Start()
     {
-        StreamReader sr = new StreamReader(filePath);
+        StreamReader sr = new StreamReader(Application.dataPath + filePath);
         line = sr.ReadLine();
         while (line != null)
         {
             Debug.Log(line);
             matrixLine = line.ToCharArray();
             columnas = matrixLine.Length;
-            for(int i = 0; i < matrixLine.Length - 2; i++)
-            {
-                Debug.Log("Hola");
-                filas += 1;
-            }
+            filas++;
             lines.Add(line);
             line = sr.ReadLine();
         }
+        sr.Close();
         Debug.Log("Filas: " + filas + "; Columnas: " + columnas);
         mapMatrix = new MapMatrix(filas, columnas);
-        sr.Close();
 
         for (int i = 0;i < filas; i++)
         {
