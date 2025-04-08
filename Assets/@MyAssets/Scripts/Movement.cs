@@ -5,26 +5,15 @@ using UnityEngine;
 public abstract class Movement : MonoBehaviour
 {
     [SerializeField] protected MapMatrix matrix;
-    protected Vector2 position;
+    [SerializeField] protected Vector2 position;
     protected int nextObject;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Vector2 Position { get => position; set => position = value; }
 
     public abstract void move(int movement);
-    
 
 
-
-        public void movementCheck(int movement)
+    public void movementCheck(int movement)
     {
         switch (movement)
         {

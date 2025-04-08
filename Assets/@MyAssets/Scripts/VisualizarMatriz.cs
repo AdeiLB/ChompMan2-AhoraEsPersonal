@@ -12,6 +12,8 @@ public class VisualizarMatriz : MonoBehaviour
     [SerializeField] private GameObject prefab;
     [SerializeField] private MapMatrix matriz;
     [SerializeField] private string filePath = "\\Maps\\map1.txt";
+    [SerializeField] private List<GameObject> movablesList = new List<GameObject>();
+    private Dictionary<Movement, GameObject> movables = new Dictionary<Movement, GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +41,15 @@ public class VisualizarMatriz : MonoBehaviour
                 }
             }
         }
+
+        movablesList.ForEach(go => movables.Add(go.GetComponent<Movement>(), go));
+
+
+    }
+
+    private void Update()
+    {
+        Draw();
     }
 
     private void ReadFile()
@@ -73,5 +84,13 @@ public class VisualizarMatriz : MonoBehaviour
         }
 
         Debug.Log(matriz);
+    }
+
+    public void Draw()
+    {
+        foreach (KeyValuePair<Movement, GameObject> pair in movables)
+        {
+            pair.Value.transform.position = new Vector2(initialPosition.x + pair.Key.Position.x * interval, initialPosition.y + pair.Key.Position.y * interval);
+        }
     }
 }
