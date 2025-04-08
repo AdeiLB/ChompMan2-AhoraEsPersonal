@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class movementChompMan : Movement
 {
+
+    //TODO añadir mopvimiento con racciones totales EN LA MATRIZ
     public override void move(int movement)
     {
         Reaction(nextObject);

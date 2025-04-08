@@ -9,8 +9,6 @@ public abstract class Movement : MonoBehaviour
     protected Casillas nextObject;
     // Start is called before the first frame update
 
-    protected int nextObject;
-
     public Vector2 Position { get => position; set => position = value; }
 
     public abstract void move(int movement);
