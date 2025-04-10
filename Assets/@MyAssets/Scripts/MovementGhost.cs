@@ -47,6 +47,7 @@ public class MovementGhost : Movement
 
     public override void spawn()
     {
+
         matrix.SetValue(((int)position.x), ((int)position.y), ((int)Casillas.Fantasma));
     }
 
