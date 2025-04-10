@@ -12,8 +12,7 @@ public class VisualizarMatriz : MonoBehaviour
     [SerializeField] private GameObject prefab;
     [SerializeField] private MapMatrix matriz;
     [SerializeField] private string filePath = "\\Maps\\map1.txt";
-    [SerializeField] private List<GameObject> movablesList = new List<GameObject>();
-    private Dictionary<Movement, GameObject> movables = new Dictionary<Movement, GameObject>();
+    [SerializeField] private List<GameObject> drawables = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -29,20 +28,6 @@ public class VisualizarMatriz : MonoBehaviour
         ReadFile();
 
         matriz = matriz.GetInverted();
-
-        for (int i = 0; i < matriz.GetRowCount(); i++)
-        {
-            for (int j = 0; j < matriz.GetColumnCount(); j++)
-            {
-                if (matriz[i,j] == 1)
-                {
-                    GameObject go = Instantiate(prefab, new Vector3(initialPosition.x + (j * interval), initialPosition.y + (i * interval), 0), Quaternion.identity);
-
-                }
-            }
-        }
-
-        movablesList.ForEach(go => movables.Add(go.GetComponent<Movement>(), go));
 
 
     }
@@ -86,11 +71,28 @@ public class VisualizarMatriz : MonoBehaviour
         Debug.Log(matriz);
     }
 
-    public void Draw()
+    //public void Draw()
+    //{
+    //    foreach (KeyValuePair<Movement, GameObject> pair in movables)
+    //    {
+    //        pair.Value.transform.position = new Vector2(initialPosition.x + pair.Key.Position.x * interval, initialPosition.y + pair.Key.Position.y * interval);
+    //    }
+    //}
+
+    private void Draw()
     {
-        foreach (KeyValuePair<Movement, GameObject> pair in movables)
+        for (int i = 0; i < matriz.GetRowCount(); i++)
         {
-            pair.Value.transform.position = new Vector2(initialPosition.x + pair.Key.Position.x * interval, initialPosition.y + pair.Key.Position.y * interval);
+            for (int j = 0; j < matriz.GetColumnCount(); j++)
+            {
+                if (matriz[i, j] == 1)
+                {
+                    GameObject go = Instantiate(prefab, new Vector3(initialPosition.x + (j * interval), initialPosition.y + (i * interval), 0), Quaternion.identity);
+                    drawables.ForEach(d => Destroy(d));
+                    drawables = new List<GameObject>();
+                    drawables.Add(go);
+                }
+            }
         }
     }
 }
