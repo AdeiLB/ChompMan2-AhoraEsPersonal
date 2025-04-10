@@ -10,9 +10,13 @@ public class VisualizarMatriz : MonoBehaviour
     [SerializeField] private Vector2 initialPosition;
     [SerializeField] private float interval;
     [SerializeField] private GameObject prefab;
+    [SerializeField] private GameObject chompMan;
+    [SerializeField] private GameObject ghost;
     [SerializeField] private MapMatrix matriz;
     [SerializeField] private string filePath = "\\Maps\\map1.txt";
     [SerializeField] private List<GameObject> drawables = new List<GameObject>();
+
+    public MapMatrix Matriz { get => matriz; set => matriz = value; }
 
     // Start is called before the first frame update
     void Start()
@@ -79,8 +83,10 @@ public class VisualizarMatriz : MonoBehaviour
     //    }
     //}
 
-    private void Draw()
+    public void Draw()
     {
+        drawables.ForEach(d => Destroy(d));
+        drawables = new List<GameObject>();
         for (int i = 0; i < matriz.GetRowCount(); i++)
         {
             for (int j = 0; j < matriz.GetColumnCount(); j++)
@@ -88,9 +94,15 @@ public class VisualizarMatriz : MonoBehaviour
                 if (matriz[i, j] == 1)
                 {
                     GameObject go = Instantiate(prefab, new Vector3(initialPosition.x + (j * interval), initialPosition.y + (i * interval), 0), Quaternion.identity);
-                    drawables.ForEach(d => Destroy(d));
-                    drawables = new List<GameObject>();
                     drawables.Add(go);
+                }
+                if (matriz[i, j] == 5)
+                {
+                    chompMan.transform.position = new Vector3(initialPosition.x + (j * interval), initialPosition.y + (i * interval), 0);
+                }
+                if (matriz[i, j] == 3)
+                {
+                    ghost.transform.position = new Vector3(initialPosition.x + (j * interval), initialPosition.y + (i * interval), 0);
                 }
             }
         }

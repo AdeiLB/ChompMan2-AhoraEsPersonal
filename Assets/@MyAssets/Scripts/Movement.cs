@@ -4,17 +4,27 @@ using UnityEngine;
 
 public abstract class Movement : MonoBehaviour
 {
+    [SerializeField] protected VisualizarMatriz visualizarMatriz;
     [SerializeField] protected MapMatrix matrix;
+
     [SerializeField] protected Vector2 position;
     protected Casillas nextObject;
     // Start is called before the first frame update
 
     public Vector2 Position { get => position; set => position = value; }
 
-    public abstract void move(int movement);
+    public abstract void spawn();
+    public abstract void Move(int movement);
 
 
-    public void movementCheck(int movement)
+    private void Start()
+    {
+        matrix = visualizarMatriz.Matriz;
+        spawn();
+        
+    }
+
+    public void MovementCheck(int movement)
     {
        switch (movement)
        {
@@ -22,19 +32,19 @@ public abstract class Movement : MonoBehaviour
                 break;
             case 1://arriba
                 if (CheckTile(matrix.GetValue((int)position.x + 1, (int)position.y)))
-                    move(1);
+                    Move(1);
                 break;
             case 2://Derecha
                 if(CheckTile(matrix.GetValue((int)position.x , (int)position.y+1)))
-                    move(2);
+                    Move(2);
                 break;
             case 3://Abajo
                 if (CheckTile(matrix.GetValue((int)position.x - 1, (int)position.y)))
-                    move(3);
+                    Move(3);
                 break;
             case 4://Izquierda
                 if (CheckTile(matrix.GetValue((int)position.x, (int)position.y - 1)))
-                    move(4);
+                    Move(4);
                 break;
        }
 
@@ -43,6 +53,7 @@ public abstract class Movement : MonoBehaviour
 
     public bool CheckTile(int tileNumber)
     {
+        Debug.Log("NetxTile = x" + position.x +",y" + position.y +"content:"  + tileNumber);
 
         switch(tileNumber)
         {
@@ -73,7 +84,10 @@ public abstract class Movement : MonoBehaviour
         }
     }
 
-
+    public MapMatrix getMatrix()
+    {
+        return matrix;
+    }
 
 
 }
