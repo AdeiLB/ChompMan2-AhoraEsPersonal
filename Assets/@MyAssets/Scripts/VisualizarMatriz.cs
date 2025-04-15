@@ -10,11 +10,16 @@ public class VisualizarMatriz : MonoBehaviour
     [SerializeField] private Vector2 initialPosition;
     [SerializeField] private float interval;
     [SerializeField] private GameObject prefab;
+    [SerializeField] private GameObject bolitaPrefab;
+
     [SerializeField] private GameObject chompMan;
     [SerializeField] private GameObject ghost;
+
     [SerializeField] private MapMatrix matriz;
     [SerializeField] private string filePath = "\\Maps\\map1.txt";
     [SerializeField] private List<GameObject> drawables = new List<GameObject>();
+
+    private int numBolitas = 0;
 
     public MapMatrix Matriz { get => matriz; set => matriz = value; }
 
@@ -39,6 +44,7 @@ public class VisualizarMatriz : MonoBehaviour
     private void Update()
     {
         Draw();
+        CheckBolitas();
     }
 
     private void ReadFile()
@@ -53,7 +59,7 @@ public class VisualizarMatriz : MonoBehaviour
         line = sr.ReadLine();
         while (line != null)
         {
-            Debug.Log(line);
+            
             matrixLine = line.ToCharArray();
             columnas = matrixLine.Length;
             filas++;
@@ -61,7 +67,6 @@ public class VisualizarMatriz : MonoBehaviour
             line = sr.ReadLine();
         }
         sr.Close();
-        Debug.Log("Filas: " + filas + "; Columnas: " + columnas);
         matriz = new MapMatrix(filas, columnas);
 
         for (int i = 0; i < filas; i++)
@@ -72,7 +77,6 @@ public class VisualizarMatriz : MonoBehaviour
             }
         }
 
-        Debug.Log(matriz);
     }
 
     //public void Draw()
@@ -85,6 +89,7 @@ public class VisualizarMatriz : MonoBehaviour
 
     public void Draw()
     {
+        numBolitas = 0;
         drawables.ForEach(d => Destroy(d));
         drawables = new List<GameObject>();
         for (int i = 0; i < matriz.GetRowCount(); i++)
@@ -96,15 +101,29 @@ public class VisualizarMatriz : MonoBehaviour
                     GameObject go = Instantiate(prefab, new Vector3(initialPosition.x + (j * interval), initialPosition.y + (i * interval), 0), Quaternion.identity);
                     drawables.Add(go);
                 }
-                if (matriz[i, j] == 5)
+                else if (matriz[i, j] == 2)
+                {
+                    GameObject go = Instantiate(bolitaPrefab, new Vector3(initialPosition.x + (j * interval), initialPosition.y + (i * interval), 0), Quaternion.identity);
+                    drawables.Add(go);
+                    numBolitas++;
+                }
+                else if (matriz[i, j] == 5)
                 {
                     chompMan.transform.position = new Vector3(initialPosition.x + (j * interval), initialPosition.y + (i * interval), 0);
                 }
-                if (matriz[i, j] == 3)
+                else if (matriz[i, j] == 3)
                 {
                     ghost.transform.position = new Vector3(initialPosition.x + (j * interval), initialPosition.y + (i * interval), 0);
                 }
             }
+        }
+    }
+
+    public void CheckBolitas()
+    {
+        if(numBolitas <= 0)
+        {
+            Debug.Log("No hay mas volitas reset");
         }
     }
 }

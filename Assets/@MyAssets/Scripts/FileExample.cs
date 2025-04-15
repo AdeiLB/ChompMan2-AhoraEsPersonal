@@ -20,7 +20,7 @@ public class FileExample : MonoBehaviour
         line = sr.ReadLine();
         while (line != null)
         {
-            Debug.Log(line);
+            //Debug.Log(line);
             matrixLine = line.ToCharArray();
             columnas = matrixLine.Length;
             filas++;
@@ -28,7 +28,7 @@ public class FileExample : MonoBehaviour
             line = sr.ReadLine();
         }
         sr.Close();
-        Debug.Log("Filas: " + filas + "; Columnas: " + columnas);
+        //Debug.Log("Filas: " + filas + "; Columnas: " + columnas);
         mapMatrix = new MapMatrix(filas, columnas);
 
         for (int i = 0;i < filas; i++)
@@ -39,7 +39,7 @@ public class FileExample : MonoBehaviour
             }
         }
 
-        Debug.Log(mapMatrix);
+        //Debug.Log(mapMatrix);
 
 
     }

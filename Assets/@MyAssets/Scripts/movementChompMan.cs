@@ -45,7 +45,7 @@ public class MovementChompMan : Movement
         switch(obj)
         {
             case Casillas.Bolita:
-                Debug.Log("tremenda comida de bola");
+                //Debug.Log("tremenda comida de bola");
                 break;
 
             case Casillas.Fantasma:

@@ -53,7 +53,7 @@ public abstract class Movement : MonoBehaviour
 
     public bool CheckTile(int tileNumber)
     {
-        Debug.Log("NetxTile = x" + position.x +",y" + position.y +"content:"  + tileNumber);
+     
 
         switch(tileNumber)
         {

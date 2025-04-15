@@ -155,9 +155,10 @@ MonoBehaviour:
   initialPosition: {x: 0, y: 0}
   interval: 1
   prefab: {fileID: 3292686828771586328, guid: 891127c92af7428439ab01e0602ca788, type: 3}
+  bolitaPrefab: {fileID: 4910066201722492889, guid: f5f08f222999676438fed2a36c3371ce, type: 3}
   chompMan: {fileID: 1039454511}
   ghost: {fileID: 844144832}
-  filePath: \Maps\OG_map.txt
+  filePath: \Maps\map1.txt
   drawables: []
 --- !u!4 &292311975
 Transform:
@@ -248,7 +249,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 12
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -273,7 +274,7 @@ Transform:
   m_GameObject: {fileID: 786914042}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 9.3, y: 10.04, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -305,7 +306,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 844144832}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57e284adce44e704faaffc199e04105e, type: 3}
   m_Name: 
@@ -501,7 +502,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1039454511}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57e284adce44e704faaffc199e04105e, type: 3}
   m_Name: 
