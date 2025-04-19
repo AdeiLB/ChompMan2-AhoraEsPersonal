@@ -114,6 +114,10 @@ public class VisualizarMatriz : MonoBehaviour
                 else if (matriz[i, j] == 3)
                 {
                     ghost.transform.position = new Vector3(initialPosition.x + (j * interval), initialPosition.y + (i * interval), 0);
+                    if (ghost.GetComponent<MovementGhost>().IsOverPellet())
+                    {
+                        numBolitas++;
+                    }
                 }
             }
         }
@@ -123,7 +127,7 @@ public class VisualizarMatriz : MonoBehaviour
     {
         if(numBolitas <= 0)
         {
-            Debug.Log("No hay mas volitas reset"); //TODO qué pasa si un fantasma está sobre una bolita?
+            Debug.Log("No hay mas volitas reset");
         }
     }
 }

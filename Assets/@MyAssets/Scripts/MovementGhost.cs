@@ -58,4 +58,9 @@ public class MovementGhost : Movement
             chompMan.GetComponent<MovementChompMan>().death();
         }
     }
+
+    public bool IsOverPellet()
+    {
+        return lastObject == ((int)Casillas.Bolita);
+    }
 }
