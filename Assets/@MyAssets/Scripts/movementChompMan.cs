@@ -9,6 +9,7 @@ public class MovementChompMan : Movement
     //Hacer movimineto de los fantasmas 
     public override void Move(int movement)
     {
+        Debug.Log(movement);
         Reaction(nextObject);
         switch (movement)
         {
