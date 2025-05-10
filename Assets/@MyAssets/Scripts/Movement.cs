@@ -5,9 +5,9 @@ using UnityEngine;
 public abstract class Movement : MonoBehaviour
 {
     [SerializeField] protected VisualizarMatriz visualizarMatriz;
-    [SerializeField] protected MapMatrix matrix;
 
     [SerializeField] protected Vector2 position;
+    [SerializeField] protected Vector2 originalPosition;
     protected Casillas nextObject;
     // Start is called before the first frame update
 
@@ -19,7 +19,7 @@ public abstract class Movement : MonoBehaviour
 
     private void Start()
     {
-        matrix = visualizarMatriz.Matriz;
+        originalPosition = position;
         spawn();
         
     }
@@ -31,19 +31,19 @@ public abstract class Movement : MonoBehaviour
             case 0:
                 break;
             case 1://arriba
-                if (CheckTile(matrix.GetValue((int)position.x + 1, (int)position.y)))
+                if (CheckTile(visualizarMatriz.Matriz.GetValue((int)position.x + 1, (int)position.y)))
                     Move(1);
                 break;
             case 2://Derecha
-                if(CheckTile(matrix.GetValue((int)position.x , (int)position.y+1)))
+                if(CheckTile(visualizarMatriz.Matriz.GetValue((int)position.x , (int)position.y+1)))
                     Move(2);
                 break;
             case 3://Abajo
-                if (CheckTile(matrix.GetValue((int)position.x - 1, (int)position.y)))
+                if (CheckTile(visualizarMatriz.Matriz.GetValue((int)position.x - 1, (int)position.y)))
                     Move(3);
                 break;
             case 4://Izquierda
-                if (CheckTile(matrix.GetValue((int)position.x, (int)position.y - 1)))
+                if (CheckTile(visualizarMatriz.Matriz.GetValue((int)position.x, (int)position.y - 1)))
                     Move(4);
                 break;
        }
@@ -82,11 +82,6 @@ public abstract class Movement : MonoBehaviour
             
             
         }
-    }
-
-    public MapMatrix getMatrix()
-    {
-        return matrix;
     }
 
 

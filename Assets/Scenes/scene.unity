@@ -158,7 +158,7 @@ MonoBehaviour:
   bolitaPrefab: {fileID: 4910066201722492889, guid: f5f08f222999676438fed2a36c3371ce, type: 3}
   chompMan: {fileID: 1039454511}
   ghost: {fileID: 844144832}
-  filePath: \Maps\map1.txt
+  filePath: \Maps\OG_map.txt
   drawables: []
 --- !u!4 &292311975
 Transform:
@@ -184,10 +184,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 292311973}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7587df8ad5e1b7d43b29f8f8882f1952, type: 3}
+  m_Script: {fileID: 11500000, guid: 3875b079cdb0b594aac7b217f3bf4c96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  filePath: \Maps\map1.txt
+  chompManAgent: {fileID: 1039454516}
+  ghostAgent: {fileID: 844144840}
+  visualizarMatriz: {fileID: 292311974}
 --- !u!1 &786914042
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,7 +292,6 @@ GameObject:
   m_Component:
   - component: {fileID: 844144836}
   - component: {fileID: 844144835}
-  - component: {fileID: 844144833}
   - component: {fileID: 844144837}
   - component: {fileID: 844144840}
   - component: {fileID: 844144839}
@@ -301,21 +302,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &844144833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 844144832}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57e284adce44e704faaffc199e04105e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movement: {fileID: 844144837}
-  visualizarMatriz: {fileID: 292311974}
+  m_IsActive: 0
 --- !u!212 &844144835
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -396,7 +383,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualizarMatriz: {fileID: 292311974}
-  position: {x: 6, y: 3}
+  position: {x: 13, y: 9}
+  originalPosition: {x: 0, y: 0}
   chompMan: {fileID: 1039454511}
 --- !u!114 &844144838
 MonoBehaviour:
@@ -425,7 +413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 1
+    VectorObservationSize: 900
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 0
@@ -437,7 +425,7 @@ MonoBehaviour:
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
   m_BehaviorType: 0
-  m_BehaviorName: My Behavior
+  m_BehaviorName: Ghost
   TeamId: 0
   m_UseChildSensors: 1
   m_UseChildActuators: 1
@@ -457,8 +445,9 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
+  MaxStep: 10000
   movement: {fileID: 844144837}
+  visualizarMatriz: {fileID: 292311974}
 --- !u!1 &1039454511
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,7 +459,6 @@ GameObject:
   - component: {fileID: 1039454513}
   - component: {fileID: 1039454512}
   - component: {fileID: 1039454514}
-  - component: {fileID: 1039454515}
   - component: {fileID: 1039454518}
   - component: {fileID: 1039454517}
   - component: {fileID: 1039454516}
@@ -480,7 +468,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1039454512
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -561,21 +549,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualizarMatriz: {fileID: 292311974}
-  position: {x: 1, y: 1}
---- !u!114 &1039454515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1039454511}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57e284adce44e704faaffc199e04105e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movement: {fileID: 1039454514}
-  visualizarMatriz: {fileID: 292311974}
+  position: {x: 1, y: 9}
+  originalPosition: {x: 0, y: 0}
+  chompManAgent: {fileID: 1039454516}
 --- !u!114 &1039454516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -591,8 +567,9 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
+  MaxStep: 10000
   movement: {fileID: 1039454514}
+  visualizarMatriz: {fileID: 292311974}
 --- !u!114 &1039454517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -620,7 +597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 1
+    VectorObservationSize: 900
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 0
@@ -631,9 +608,9 @@ MonoBehaviour:
     hasUpgradedBrainParametersWithActionSpec: 1
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
-  m_BehaviorType: 1
+  m_BehaviorType: 0
   m_BehaviorName: ChompMan
-  TeamId: 0
+  TeamId: 1
   m_UseChildSensors: 1
   m_UseChildActuators: 1
   m_ObservableAttributeHandling: 0

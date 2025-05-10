@@ -1,0 +1,29 @@
+{
+    "Ghost": {
+        "checkpoints": [
+            {
+                "steps": 320,
+                "file_path": "results\\run1\\Ghost\\Ghost-320.onnx",
+                "reward": null,
+                "creation_time": 1746895613.7487779,
+                "auxillary_file_paths": [
+                    "results\\run1\\Ghost\\Ghost-320.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 320,
+            "file_path": "results\\run1\\Ghost.onnx",
+            "reward": null,
+            "creation_time": 1746895613.7487779,
+            "auxillary_file_paths": [
+                "results\\run1\\Ghost\\Ghost-320.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0",
+        "torch_version": "2.6.0+cpu"
+    }
+}

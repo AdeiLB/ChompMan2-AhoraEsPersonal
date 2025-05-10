@@ -12,43 +12,45 @@ public class MovementGhost : Movement
 
     public override void Move(int movement)
     {
-        Reaction(nextObject);
         switch (movement)
         {
             case 1:
-                matrix.SetValue((int)position.x, (int)position.y, lastObject);
+                visualizarMatriz.Matriz.SetValue((int)position.x, (int)position.y, lastObject);
                 this.position.x += 1;
-                lastObject = matrix.GetValue((int)position.x, (int)position.y);
-                matrix.SetValue((int)position.x, (int)position.y, ((int)Casillas.Fantasma));
+                lastObject = visualizarMatriz.Matriz.GetValue((int)position.x, (int)position.y);
+                visualizarMatriz.Matriz.SetValue((int)position.x, (int)position.y, ((int)Casillas.Fantasma));
                 break;
 
             case 2:
-                matrix.SetValue((int)position.x, (int)position.y, lastObject);
+                visualizarMatriz.Matriz.SetValue((int)position.x, (int)position.y, lastObject);
                 this.position.y += 1;
-                lastObject = matrix.GetValue((int)position.x, (int)position.y);
-                matrix.SetValue((int)position.x, (int)position.y, ((int)Casillas.Fantasma));
+                lastObject = visualizarMatriz.Matriz.GetValue((int)position.x, (int)position.y);
+                visualizarMatriz.Matriz.SetValue((int)position.x, (int)position.y, ((int)Casillas.Fantasma));
                 break;
 
             case 3:
-                matrix.SetValue((int)position.x, (int)position.y, lastObject);
+                visualizarMatriz.Matriz.SetValue((int)position.x, (int)position.y, lastObject);
                 this.position.x -= 1;
-                lastObject = matrix.GetValue((int)position.x, (int)position.y);
-                matrix.SetValue((int)position.x, (int)position.y, ((int)Casillas.Fantasma));
+                lastObject = visualizarMatriz.Matriz.GetValue((int)position.x, (int)position.y);
+                visualizarMatriz.Matriz.SetValue((int)position.x, (int)position.y, ((int)Casillas.Fantasma));
                 break;
 
             case 4:
-                matrix.SetValue((int)position.x, (int)position.y, lastObject);
+                visualizarMatriz.Matriz.SetValue((int)position.x, (int)position.y, lastObject);
                 this.position.y -= 1;
-                lastObject = matrix.GetValue((int)position.x, (int)position.y);
-                matrix.SetValue((int)position.x, (int)position.y, ((int)Casillas.Fantasma));
+                lastObject = visualizarMatriz.Matriz.GetValue((int)position.x, (int)position.y);
+                visualizarMatriz.Matriz.SetValue((int)position.x, (int)position.y, ((int)Casillas.Fantasma));
                 break;
         }
+        Reaction(nextObject);
     }
 
     public override void spawn()
     {
-
-        matrix.SetValue(((int)position.x), ((int)position.y), ((int)Casillas.Fantasma));
+        lastObject = ((int)Casillas.Bolita);
+        //Debug.Log("Ueeee");
+        position = originalPosition;
+        visualizarMatriz.Matriz.SetValue(((int)position.x), ((int)position.y), ((int)Casillas.Fantasma));
     }
 
     private void Reaction(Casillas nextObject)

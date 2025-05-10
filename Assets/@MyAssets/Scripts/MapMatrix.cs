@@ -93,6 +93,19 @@ public class MapMatrix
         return mapMatrix;
     }
 
+    public MapMatrix hardCopy()
+    {
+        MapMatrix newMapMatrix = new MapMatrix(GetRowCount(), GetColumnCount());
+        for (int i = 0; i < GetRowCount(); i++)
+        {
+            for (int j = 0; j < GetColumnCount(); j++)
+            {
+                newMapMatrix[i, j] = this[i, j];
+            }
+        }
+        return newMapMatrix;
+    }
+
     public int this[int row, int column]
     {
         get { return GetValue(row, column); }
@@ -112,4 +125,5 @@ public class MapMatrix
         }
         return mapString;
     }
+
 }

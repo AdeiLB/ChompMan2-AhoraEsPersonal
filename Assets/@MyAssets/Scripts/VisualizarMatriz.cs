@@ -19,12 +19,14 @@ public class VisualizarMatriz : MonoBehaviour
     [SerializeField] private string filePath = "\\Maps\\map1.txt";
     [SerializeField] private List<GameObject> drawables = new List<GameObject>();
 
+    private MapMatrix originalMap;
+
     private int numBolitas = 0;
 
     public MapMatrix Matriz { get => matriz; set => matriz = value; }
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         //matriz = new MapMatrix(3, 3, 0);
         //matriz[0, 0] = 1;
@@ -37,6 +39,13 @@ public class VisualizarMatriz : MonoBehaviour
         ReadFile();
 
         matriz = matriz.GetInverted();
+
+        Debug.Log(matriz.GetRowCount()+":"+matriz.GetColumnCount());
+
+        originalMap = matriz.hardCopy();
+
+        chompMan.SetActive(true);
+        ghost.SetActive(true);
 
 
     }
@@ -89,6 +98,7 @@ public class VisualizarMatriz : MonoBehaviour
 
     public void Draw()
     {
+        //Debug.Log(matriz);
         numBolitas = 0;
         drawables.ForEach(d => Destroy(d));
         drawables = new List<GameObject>();
@@ -127,7 +137,13 @@ public class VisualizarMatriz : MonoBehaviour
     {
         if(numBolitas <= 0)
         {
+            AgentManager.instance.ChompManWin();
             Debug.Log("No hay mas volitas reset");
         }
+    }
+
+    public void Reset()
+    {
+        matriz = originalMap.hardCopy();
     }
 }

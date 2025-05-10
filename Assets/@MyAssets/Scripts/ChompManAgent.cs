@@ -2,16 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
+using Unity.MLAgents.Sensors;
 using UnityEngine;
 
 public class ChompManAgent : Agent
 {
 
     [SerializeField] private Movement movement;
+    [SerializeField] private VisualizarMatriz visualizarMatriz;
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+    }
 
     public override void OnActionReceived(ActionBuffers actions)
     {
+        this.AddReward(-0.1f);
         movement.MovementCheck(actions.DiscreteActions[0]);
+    }
+
+    public override void CollectObservations(VectorSensor sensor)
+    {
+        for (int i = 0; i < 30; i++)
+        {
+            for (int j = 0; j < 30; j++)
+            {
+                if (i < visualizarMatriz.Matriz.GetRowCount() && j < visualizarMatriz.Matriz.GetColumnCount())
+                {
+                    sensor.AddObservation(visualizarMatriz.Matriz[i, j]);
+                } else
+                {
+                    sensor.AddObservation(0);
+                }
+            }
+        }
+
+        base.CollectObservations(sensor);
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
@@ -38,5 +65,13 @@ public class ChompManAgent : Agent
         {
             discreteActions[0] = 0; // No Action
         }
+    }
+
+    public override void OnEpisodeBegin()
+    {
+        Debug.Log("hola");
+        base.OnEpisodeBegin();
+        AgentManager.instance.OnEpisodeBeginGlobal();
+        movement.spawn();
     }
 }
