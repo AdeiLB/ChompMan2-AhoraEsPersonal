@@ -13,7 +13,7 @@ behaviors:
       learning_rate_schedule: linear
       beta_schedule: linear
       epsilon_schedule: linear
-    checkpoint_interval: 50000
+    checkpoint_interval: 100000
     network_settings:
       normalize: false
       hidden_units: 128
@@ -39,7 +39,7 @@ behaviors:
     even_checkpoints: false
     max_steps: 5000000
     time_horizon: 64
-    summary_freq: 10000
+    summary_freq: 30000
     threaded: false
     self_play: null
     behavioral_cloning: null
@@ -56,7 +56,7 @@ behaviors:
       learning_rate_schedule: linear
       beta_schedule: linear
       epsilon_schedule: linear
-    checkpoint_interval: 50000
+    checkpoint_interval: 100000
     network_settings:
       normalize: false
       hidden_units: 128
@@ -82,7 +82,7 @@ behaviors:
     even_checkpoints: false
     max_steps: 5000000
     time_horizon: 64
-    summary_freq: 10000
+    summary_freq: 30000
     threaded: false
     self_play: null
     behavioral_cloning: null

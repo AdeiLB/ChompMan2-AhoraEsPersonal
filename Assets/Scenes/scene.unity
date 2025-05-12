@@ -446,6 +446,7 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 10000
+  chompManMovement: {fileID: 1039454514}
   movement: {fileID: 844144837}
   visualizarMatriz: {fileID: 292311974}
 --- !u!1 &1039454511

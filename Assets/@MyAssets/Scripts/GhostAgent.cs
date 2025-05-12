@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class GhostAgent : Agent
 {
+    [SerializeField] private Movement chompManMovement;
     [SerializeField] private Movement movement;
     [SerializeField] private VisualizarMatriz visualizarMatriz;
 
@@ -37,7 +38,8 @@ public class GhostAgent : Agent
 
     public override void OnActionReceived(ActionBuffers actions)
     {
-        this.AddReward(-0.1f);
+        float distancia = calcularDistancia(chompManMovement.Position, movement.Position);
+        this.AddReward(-distancia * 0.01f);
         movement.MovementCheck(actions.DiscreteActions[0]);
     }
 
@@ -71,5 +73,36 @@ public class GhostAgent : Agent
     {
         base.OnEpisodeBegin();
         movement.spawn();
+    }
+
+    public float calcularDistancia(Vector2 pos1, Vector2 pos2)
+    {
+        Vector2 vectorEntrePuntos = pos1 - pos2;
+
+        return (float)Mathf.Sqrt(Mathf.Pow(vectorEntrePuntos.x, 2) + Mathf.Pow(vectorEntrePuntos.y, 2));
+    }
+
+    public float applyAStar(Vector2 origin, Vector2 destination)
+    {
+
+        var start = new AStar.Node(0, 0);
+        var goal = new AStar.Node(4, 4);
+        var path = AStar.FindPath(visualizarMatriz.Matriz, start, goal);
+
+        if (path != null)
+        {
+            Debug.Log("Path found:");
+            foreach (var node in path)
+            {
+                Debug.Log($"({node.X}, {node.Y})");
+                return 0;
+            }
+        }
+        else
+        {
+            Debug.Log("No path found.");
+            return -1;
+        }
+        return -1;
     }
 }

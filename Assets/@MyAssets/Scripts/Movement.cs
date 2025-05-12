@@ -84,5 +84,9 @@ public abstract class Movement : MonoBehaviour
         }
     }
 
+    public Vector2 getPosition()
+    {
+        return position;
+    }
 
 }

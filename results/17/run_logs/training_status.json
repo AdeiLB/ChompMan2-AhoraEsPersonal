@@ -1,0 +1,123 @@
+{
+    "ChompMan": {
+        "checkpoints": [
+            {
+                "steps": 229263,
+                "file_path": "results\\17\\ChompMan\\ChompMan-229263.onnx",
+                "reward": -111.18000328540802,
+                "creation_time": 1747057777.079621,
+                "auxillary_file_paths": [
+                    "results\\17\\ChompMan\\ChompMan-229263.pt"
+                ]
+            },
+            {
+                "steps": 299985,
+                "file_path": "results\\17\\ChompMan\\ChompMan-299985.onnx",
+                "reward": -128.23334728678068,
+                "creation_time": 1747058490.7504497,
+                "auxillary_file_paths": [
+                    "results\\17\\ChompMan\\ChompMan-299985.pt"
+                ]
+            },
+            {
+                "steps": 399948,
+                "file_path": "results\\17\\ChompMan\\ChompMan-399948.onnx",
+                "reward": -122.47501238435507,
+                "creation_time": 1747059166.052011,
+                "auxillary_file_paths": [
+                    "results\\17\\ChompMan\\ChompMan-399948.pt"
+                ]
+            },
+            {
+                "steps": 499993,
+                "file_path": "results\\17\\ChompMan\\ChompMan-499993.onnx",
+                "reward": -90.00001701712608,
+                "creation_time": 1747059847.2977598,
+                "auxillary_file_paths": [
+                    "results\\17\\ChompMan\\ChompMan-499993.pt"
+                ]
+            },
+            {
+                "steps": 599062,
+                "file_path": "results\\17\\ChompMan\\ChompMan-599062.onnx",
+                "reward": null,
+                "creation_time": 1747060575.4247932,
+                "auxillary_file_paths": [
+                    "results\\17\\ChompMan\\ChompMan-599062.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 599062,
+            "file_path": "results\\17\\ChompMan.onnx",
+            "reward": null,
+            "creation_time": 1747060575.4247932,
+            "auxillary_file_paths": [
+                "results\\17\\ChompMan\\ChompMan-599062.pt"
+            ]
+        }
+    },
+    "Ghost": {
+        "checkpoints": [
+            {
+                "steps": 229263,
+                "file_path": "results\\17\\Ghost\\Ghost-229263.onnx",
+                "reward": 51.908552932739255,
+                "creation_time": 1747057777.1302867,
+                "auxillary_file_paths": [
+                    "results\\17\\Ghost\\Ghost-229263.pt"
+                ]
+            },
+            {
+                "steps": 299985,
+                "file_path": "results\\17\\Ghost\\Ghost-299985.onnx",
+                "reward": -197.66322418053946,
+                "creation_time": 1747058490.6852446,
+                "auxillary_file_paths": [
+                    "results\\17\\Ghost\\Ghost-299985.pt"
+                ]
+            },
+            {
+                "steps": 399948,
+                "file_path": "results\\17\\Ghost\\Ghost-399948.onnx",
+                "reward": -128.57466155290604,
+                "creation_time": 1747059166.0100248,
+                "auxillary_file_paths": [
+                    "results\\17\\Ghost\\Ghost-399948.pt"
+                ]
+            },
+            {
+                "steps": 499993,
+                "file_path": "results\\17\\Ghost\\Ghost-499993.onnx",
+                "reward": -280.49751257896423,
+                "creation_time": 1747059847.2517152,
+                "auxillary_file_paths": [
+                    "results\\17\\Ghost\\Ghost-499993.pt"
+                ]
+            },
+            {
+                "steps": 599062,
+                "file_path": "results\\17\\Ghost\\Ghost-599062.onnx",
+                "reward": null,
+                "creation_time": 1747060575.3176599,
+                "auxillary_file_paths": [
+                    "results\\17\\Ghost\\Ghost-599062.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 599062,
+            "file_path": "results\\17\\Ghost.onnx",
+            "reward": null,
+            "creation_time": 1747060575.3176599,
+            "auxillary_file_paths": [
+                "results\\17\\Ghost\\Ghost-599062.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0",
+        "torch_version": "2.7.0+cpu"
+    }
+}
