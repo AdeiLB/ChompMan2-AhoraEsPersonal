@@ -19,6 +19,11 @@ public class VisualizarMatriz : MonoBehaviour
     [SerializeField] private string filePath = "\\Maps\\map1.txt";
     [SerializeField] private List<GameObject> drawables = new List<GameObject>();
 
+    [Header("Visualización de caminos")]
+    [SerializeField] private bool visualizarCamino;
+    [SerializeField] private GameObject pathPrefab;
+    private List<GameObject> pathDrawables = new List<GameObject>();
+
     private MapMatrix originalMap;
 
     private int numBolitas = 0;
@@ -131,6 +136,16 @@ public class VisualizarMatriz : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void VisualizarCamino(List<AStar.Node> nodes)
+    {
+        if (!visualizarCamino) return;
+        pathDrawables.ForEach(d => Destroy(d));
+        nodes.ForEach(node =>
+        {
+            pathDrawables.Add(Instantiate(pathPrefab, new Vector3(initialPosition.x + (node.Y * interval), initialPosition.y + (node.X * interval), 0), Quaternion.identity));
+        });
     }
 
     public void CheckBolitas()

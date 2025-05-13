@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 292311975}
   - component: {fileID: 292311974}
   - component: {fileID: 292311976}
+  - component: {fileID: 292311977}
   m_Layer: 0
   m_Name: Scripter
   m_TagString: Untagged
@@ -160,6 +161,8 @@ MonoBehaviour:
   ghost: {fileID: 844144832}
   filePath: \Maps\OG_map.txt
   drawables: []
+  visualizarCamino: 1
+  pathPrefab: {fileID: 3292686828771586328, guid: 999a1c2057ef6b44e99d5579d905b4af, type: 3}
 --- !u!4 &292311975
 Transform:
   m_ObjectHideFlags: 0
@@ -190,6 +193,18 @@ MonoBehaviour:
   chompManAgent: {fileID: 1039454516}
   ghostAgent: {fileID: 844144840}
   visualizarMatriz: {fileID: 292311974}
+--- !u!114 &292311977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292311973}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 816b54962dcec67419bc0cabf3b23ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &786914042
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,6 +586,7 @@ MonoBehaviour:
   MaxStep: 10000
   movement: {fileID: 1039454514}
   visualizarMatriz: {fileID: 292311974}
+  cummulativePenalization: 0
 --- !u!114 &1039454517
 MonoBehaviour:
   m_ObjectHideFlags: 0

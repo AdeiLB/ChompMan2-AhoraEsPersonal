@@ -1,8 +1,31 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
-public class AStar
+public class AStar : MonoBehaviour
 {
+
+    public void Start()
+    {
+        // Example usage
+        MapMatrix matrix = new MapMatrix(30, 30);
+        Node start = new Node(0, 0);
+        Node goal = new Node(29, 29);
+        List<Node> path = FindPath(matrix, start, goal);
+
+        if (path != null)
+        {
+            foreach (var node in path)
+            {
+                Debug.Log($"Path: ({node.X}, {node.Y})");
+            }
+        }
+        else
+        {
+            Debug.Log("No path found");
+        }
+    }
+
     public class Node
     {
         public int X;
@@ -34,17 +57,19 @@ public class AStar
         var neighbors = new List<Node>();
         int[,] directions = new int[,] { { 0, 1 }, { 1, 0 }, { 0, -1 }, { -1, 0 } };
 
+        //Debug.Log($"Node: ({node.X}, {node.Y})");
+
         for (int i = 0; i < 4; i++)
         {
             int nx = node.X + directions[i, 0];
             int ny = node.Y + directions[i, 1];
 
-            if (nx >= 0 && ny >= 0 && nx < matriz.GetColumnCount() && ny < matriz.GetRowCount() && (matriz[nx, ny] == 2 || matriz[nx, ny] == 0))
+            if (nx >= 0 && ny >= 0 && nx < matriz.GetColumnCount() && ny < matriz.GetRowCount() && matriz[nx, ny] != 1)
             {
                 neighbors.Add(new Node(nx, ny));
             }
         }
-
+        //Debug.Log($"Neighbors of ({node.X}, {node.Y}): {neighbors.Count}");
         return neighbors;
     }
 
@@ -76,6 +101,7 @@ public class AStar
 
         while (openSet.Count > 0)
         {
+            //Debug.Log("OpenSet Count: " + openSet.Count);
             Node current = null;
             foreach (var n in openSet)
             {
@@ -96,6 +122,8 @@ public class AStar
             }
 
             openSet.Remove(current);
+
+            //Debug.Log("Neighbors: " + GetNeighbors(current, matrix).Count);
 
             foreach (var neighbor in GetNeighbors(current, matrix))
             {

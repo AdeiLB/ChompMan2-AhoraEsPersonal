@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.MLAgents;
@@ -38,7 +39,7 @@ public class GhostAgent : Agent
 
     public override void OnActionReceived(ActionBuffers actions)
     {
-        float distancia = calcularDistancia(chompManMovement.Position, movement.Position);
+        float distancia = applyAStar(movement.Position, chompManMovement.Position);
         this.AddReward(-distancia * distancia * 0.01f);
         movement.MovementCheck(actions.DiscreteActions[0]);
     }
@@ -85,24 +86,24 @@ public class GhostAgent : Agent
     public float applyAStar(Vector2 origin, Vector2 destination)
     {
 
-        var start = new AStar.Node(0, 0);
-        var goal = new AStar.Node(4, 4);
+        var start = new AStar.Node((int)origin.x, (int)origin.y);
+        var goal = new AStar.Node((int) destination.x, (int)destination.y);
         var path = AStar.FindPath(visualizarMatriz.Matriz, start, goal);
 
         if (path != null)
         {
-            Debug.Log("Path found:");
-            foreach (var node in path)
-            {
-                Debug.Log($"({node.X}, {node.Y})");
-                return 0;
-            }
+            //Debug.Log("Path found:");
+            //foreach (var node in path)
+            //{
+            //    Debug.Log($"({node.X}, {node.Y})");
+            //}
+            visualizarMatriz.VisualizarCamino(path);
+            return path.Count;
         }
         else
         {
             Debug.Log("No path found.");
             return -1;
         }
-        return -1;
     }
 }
