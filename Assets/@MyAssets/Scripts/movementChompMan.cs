@@ -7,7 +7,7 @@ using UnityEngine;
 public class MovementChompMan : Movement
 {
 
-    [SerializeField] private Agent chompManAgent;
+    [SerializeField] private ChompManAgent chompManAgent;
 
     public override void Move(int movement)
     {
@@ -49,7 +49,8 @@ public class MovementChompMan : Movement
         {
             case Casillas.Bolita:
                 //Debug.Log("tremenda comida de bola");
-                chompManAgent.AddReward(1);
+                chompManAgent.cummulativePenalization = 0;
+                chompManAgent.AddReward(10);
                 break;
 
             case Casillas.Fantasma:

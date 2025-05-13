@@ -11,6 +11,8 @@ public class ChompManAgent : Agent
     [SerializeField] private Movement movement;
     [SerializeField] private VisualizarMatriz visualizarMatriz;
 
+    public float cummulativePenalization = 0;
+
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -18,7 +20,8 @@ public class ChompManAgent : Agent
 
     public override void OnActionReceived(ActionBuffers actions)
     {
-        this.AddReward(-0.1f);
+        cummulativePenalization += 1;
+        this.AddReward(-0.1f * cummulativePenalization);
         movement.MovementCheck(actions.DiscreteActions[0]);
     }
 
