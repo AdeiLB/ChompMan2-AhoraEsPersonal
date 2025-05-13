@@ -7,7 +7,9 @@ using UnityEngine;
 public class MovementChompMan : Movement
 {
 
-    [SerializeField] private ChompManAgent chompManAgent;
+    [SerializeField] private Agent chompManAgent;
+
+    private int combo = 0;
 
     public override void Move(int movement)
     {
@@ -45,16 +47,21 @@ public class MovementChompMan : Movement
 
     private void Reaction(Enum obj)
     {
-        switch(obj)
+        //Debug.Log("Combo: " + combo);
+        switch (obj)
         {
             case Casillas.Bolita:
+                combo++;
                 //Debug.Log("tremenda comida de bola");
-                chompManAgent.cummulativePenalization = 0;
-                chompManAgent.AddReward(10);
+                chompManAgent.AddReward(1 * combo);
                 break;
 
             case Casillas.Fantasma:
                 death();
+                break;
+
+            default:
+                combo = 0;
                 break;
 
         }
@@ -65,7 +72,7 @@ public class MovementChompMan : Movement
     public void death()
     {
         AgentManager.instance.GhostWin();
-        Debug.Log("Españoles Chomp-man ha muerto");
+        //Debug.Log("Españoles Chomp-man ha muerto");
     }
 
     public override void spawn()

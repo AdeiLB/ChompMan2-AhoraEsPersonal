@@ -20,8 +20,7 @@ public class ChompManAgent : Agent
 
     public override void OnActionReceived(ActionBuffers actions)
     {
-        cummulativePenalization += 1;
-        this.AddReward(-0.1f * cummulativePenalization);
+        this.AddReward(-0.1f);
         movement.MovementCheck(actions.DiscreteActions[0]);
     }
 
@@ -72,7 +71,7 @@ public class ChompManAgent : Agent
 
     public override void OnEpisodeBegin()
     {
-        Debug.Log("hola");
+        //Debug.Log("hola");
         base.OnEpisodeBegin();
         AgentManager.instance.OnEpisodeBeginGlobal();
         movement.spawn();
