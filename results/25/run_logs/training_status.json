@@ -1,0 +1,105 @@
+{
+    "Ghost": {
+        "checkpoints": [
+            {
+                "steps": 99969,
+                "file_path": "results\\25\\Ghost\\Ghost-99969.onnx",
+                "reward": -2770.9184935433523,
+                "creation_time": 1747141233.1603847,
+                "auxillary_file_paths": [
+                    "results\\25\\Ghost\\Ghost-99969.pt"
+                ]
+            },
+            {
+                "steps": 199987,
+                "file_path": "results\\25\\Ghost\\Ghost-199987.onnx",
+                "reward": -112.83571127482823,
+                "creation_time": 1747141902.7663445,
+                "auxillary_file_paths": [
+                    "results\\25\\Ghost\\Ghost-199987.pt"
+                ]
+            },
+            {
+                "steps": 299963,
+                "file_path": "results\\25\\Ghost\\Ghost-299963.onnx",
+                "reward": -444.17997550964355,
+                "creation_time": 1747142613.8885431,
+                "auxillary_file_paths": [
+                    "results\\25\\Ghost\\Ghost-299963.pt"
+                ]
+            },
+            {
+                "steps": 318662,
+                "file_path": "results\\25\\Ghost\\Ghost-318662.onnx",
+                "reward": -149.53999090194702,
+                "creation_time": 1747142803.9243019,
+                "auxillary_file_paths": [
+                    "results\\25\\Ghost\\Ghost-318662.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 318662,
+            "file_path": "results\\25\\Ghost.onnx",
+            "reward": -149.53999090194702,
+            "creation_time": 1747142803.9243019,
+            "auxillary_file_paths": [
+                "results\\25\\Ghost\\Ghost-318662.pt"
+            ]
+        }
+    },
+    "ChompMan": {
+        "checkpoints": [
+            {
+                "steps": 99969,
+                "file_path": "results\\25\\ChompMan\\ChompMan-99969.onnx",
+                "reward": -73.95714769193104,
+                "creation_time": 1747141233.204296,
+                "auxillary_file_paths": [
+                    "results\\25\\ChompMan\\ChompMan-99969.pt"
+                ]
+            },
+            {
+                "steps": 199987,
+                "file_path": "results\\25\\ChompMan\\ChompMan-199987.onnx",
+                "reward": 96.57142896311623,
+                "creation_time": 1747141902.8075452,
+                "auxillary_file_paths": [
+                    "results\\25\\ChompMan\\ChompMan-199987.pt"
+                ]
+            },
+            {
+                "steps": 299963,
+                "file_path": "results\\25\\ChompMan\\ChompMan-299963.onnx",
+                "reward": 32.50000810623169,
+                "creation_time": 1747142613.9682252,
+                "auxillary_file_paths": [
+                    "results\\25\\ChompMan\\ChompMan-299963.pt"
+                ]
+            },
+            {
+                "steps": 318662,
+                "file_path": "results\\25\\ChompMan\\ChompMan-318662.onnx",
+                "reward": -23.100006103515625,
+                "creation_time": 1747142803.995286,
+                "auxillary_file_paths": [
+                    "results\\25\\ChompMan\\ChompMan-318662.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 318662,
+            "file_path": "results\\25\\ChompMan.onnx",
+            "reward": -23.100006103515625,
+            "creation_time": 1747142803.995286,
+            "auxillary_file_paths": [
+                "results\\25\\ChompMan\\ChompMan-318662.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0",
+        "torch_version": "2.7.0+cpu"
+    }
+}

@@ -39,7 +39,7 @@ public class GhostAgent : Agent
     public override void OnActionReceived(ActionBuffers actions)
     {
         float distancia = calcularDistancia(chompManMovement.Position, movement.Position);
-        this.AddReward(-distancia * 0.01f);
+        this.AddReward(-distancia * distancia * 0.01f);
         movement.MovementCheck(actions.DiscreteActions[0]);
     }
 

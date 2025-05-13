@@ -1,0 +1,5 @@
+1. Recompesa básica (lo de Veiga)
+2. Proximidad de fantasma
+3. Combo a pacman
+4. distancia al cuadrado para el fantasma
+Tenemos que poner el a* porque si no el fantasma no se quiere alejar para acercarse (yo me entiendo)
