@@ -28,21 +28,19 @@ public abstract class Movement : MonoBehaviour
     {
        switch (movement)
        {
-            case 0:
-                break;
-            case 1://arriba
+            case 0://arriba
                 if (CheckTile(visualizarMatriz.Matriz.GetValue((int)position.x + 1, (int)position.y)))
                     Move(1);
                 break;
-            case 2://Derecha
+            case 1://Derecha
                 if(CheckTile(visualizarMatriz.Matriz.GetValue((int)position.x , (int)position.y+1)))
                     Move(2);
                 break;
-            case 3://Abajo
+            case 2://Abajo
                 if (CheckTile(visualizarMatriz.Matriz.GetValue((int)position.x - 1, (int)position.y)))
                     Move(3);
                 break;
-            case 4://Izquierda
+            case 3://Izquierda
                 if (CheckTile(visualizarMatriz.Matriz.GetValue((int)position.x, (int)position.y - 1)))
                     Move(4);
                 break;

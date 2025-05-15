@@ -49,23 +49,19 @@ public class ChompManAgent : Agent
 
         if (Input.GetKey(KeyCode.W))
         {
-            discreteActions[0] = 1; // Move Up
+            discreteActions[0] = 0; // Move Up
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            discreteActions[0] = 3; // Move Down
+            discreteActions[0] = 2; // Move Down
         }
         else if (Input.GetKey(KeyCode.A))
         {
-            discreteActions[0] = 4; // Move Left
+            discreteActions[0] = 3; // Move Left
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            discreteActions[0] = 2; // Move Right
-        }
-        else
-        {
-            discreteActions[0] = 0; // No Action
+            discreteActions[0] = 1; // Move Right
         }
     }
 

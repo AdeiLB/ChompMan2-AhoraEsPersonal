@@ -50,23 +50,19 @@ public class GhostAgent : Agent
 
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            discreteActions[0] = 1; // Move Up
+            discreteActions[0] = 0; // Move Up
         }
         else if (Input.GetKey(KeyCode.DownArrow))
         {
-            discreteActions[0] = 3; // Move Down
+            discreteActions[0] = 2; // Move Down
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
-            discreteActions[0] = 4; // Move Left
+            discreteActions[0] = 3; // Move Left
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
-            discreteActions[0] = 2; // Move Right
-        }
-        else
-        {
-            discreteActions[0] = 0; // No Action
+            discreteActions[0] = 1; // Move Right
         }
     }
 
@@ -103,7 +99,7 @@ public class GhostAgent : Agent
         else
         {
             Debug.Log("No path found.");
-            return -1;
+            return 1;
         }
     }
 }

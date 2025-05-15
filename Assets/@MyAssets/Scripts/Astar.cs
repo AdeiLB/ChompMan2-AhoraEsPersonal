@@ -9,8 +9,11 @@ public class AStar : MonoBehaviour
     {
         // Example usage
         MapMatrix matrix = new MapMatrix(30, 30);
-        Node start = new Node(0, 0);
-        Node goal = new Node(29, 29);
+        Node goal = new Node(28, 28);
+        Node start = new Node(1, 1);
+        matrix[29, 29] = 1; // Set goal as an obstacle
+        matrix[28, 29] = 1; // Set goal as an obstacle
+        matrix[29, 28] = 1; // Set goal as an obstacle
         List<Node> path = FindPath(matrix, start, goal);
 
         if (path != null)
