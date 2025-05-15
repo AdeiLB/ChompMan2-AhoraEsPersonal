@@ -161,7 +161,7 @@ MonoBehaviour:
   ghost: {fileID: 844144832}
   filePath: \Maps\OG_map.txt
   drawables: []
-  visualizarCamino: 1
+  visualizarCamino: 0
   pathPrefab: {fileID: 3292686828771586328, guid: 999a1c2057ef6b44e99d5579d905b4af, type: 3}
 --- !u!4 &292311975
 Transform:
