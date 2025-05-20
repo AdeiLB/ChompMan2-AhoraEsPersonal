@@ -14,6 +14,7 @@ public class AStar : MonoBehaviour
         matrix[29, 29] = 1; // Set goal as an obstacle
         matrix[28, 29] = 1; // Set goal as an obstacle
         matrix[29, 28] = 1; // Set goal as an obstacle
+        Debug.Log(matrix.GetInverted());
         List<Node> path = FindPath(matrix, start, goal);
 
         if (path != null)
@@ -67,7 +68,7 @@ public class AStar : MonoBehaviour
             int nx = node.X + directions[i, 0];
             int ny = node.Y + directions[i, 1];
 
-            if (nx >= 0 && ny >= 0 && nx < matriz.GetColumnCount() && ny < matriz.GetRowCount() && matriz[nx, ny] != 1)
+            if (nx >= 0 && ny >= 0 && nx < matriz.GetRowCount() && ny < matriz.GetColumnCount() && matriz[nx, ny] != 1)
             {
                 neighbors.Add(new Node(nx, ny));
             }

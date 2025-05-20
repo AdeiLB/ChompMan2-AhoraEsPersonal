@@ -50,7 +50,7 @@ public class MovementGhost : Movement
         lastObject = ((int)Casillas.Bolita);
         do
         {
-            position = position = new Vector2(UnityEngine.Random.Range(1, visualizarMatriz.Matriz.GetColumnCount() - 2), UnityEngine.Random.Range(1, visualizarMatriz.Matriz.GetRowCount() - 2));
+            position = position = new Vector2(UnityEngine.Random.Range(1, visualizarMatriz.Matriz.GetRowCount() - 2), UnityEngine.Random.Range(1, visualizarMatriz.Matriz.GetColumnCount() - 2));
         } while (visualizarMatriz.Matriz[(int)position.x, (int)position.y] != 2);
         visualizarMatriz.Matriz.SetValue(((int)position.x), ((int)position.y), ((int)Casillas.Fantasma));
     }
