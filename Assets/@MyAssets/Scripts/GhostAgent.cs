@@ -98,7 +98,7 @@ public class GhostAgent : Agent
         }
         else
         {
-            Debug.Log("No path found.");
+            Debug.Log("No path found." + "Origin: " + origin + " : Destination: "+destination);
             return 1;
         }
     }
