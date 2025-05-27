@@ -161,7 +161,7 @@ MonoBehaviour:
   ghost: {fileID: 844144832}
   filePath: \Maps\OG_Map.txt
   drawables: []
-  visualizarCamino: 1
+  visualizarCamino: 0
   pathPrefab: {fileID: 3292686828771586328, guid: 999a1c2057ef6b44e99d5579d905b4af, type: 3}
 --- !u!4 &292311975
 Transform:
@@ -193,6 +193,8 @@ MonoBehaviour:
   chompManAgent: {fileID: 1039454516}
   ghostAgent: {fileID: 844144840}
   visualizarMatriz: {fileID: 292311974}
+  stepsPerFrame: 5
+  SlowMode: 1
 --- !u!114 &292311977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -546,7 +548,7 @@ Transform:
   m_GameObject: {fileID: 1039454511}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.04, z: 0}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

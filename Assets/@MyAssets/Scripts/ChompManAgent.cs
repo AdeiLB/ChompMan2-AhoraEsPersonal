@@ -11,6 +11,7 @@ public class ChompManAgent : Agent
     [SerializeField] private Movement movement;
     [SerializeField] private VisualizarMatriz visualizarMatriz;
 
+
     public float cummulativePenalization = 0;
 
     protected override void OnEnable()

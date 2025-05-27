@@ -19,6 +19,7 @@ public class VisualizarMatriz : MonoBehaviour
     [SerializeField] private string filePath = "\\Maps\\map1.txt";
     [SerializeField] private List<GameObject> drawables = new List<GameObject>();
 
+
     [Header("Visualización de caminos")]
     [SerializeField] private bool visualizarCamino;
     [SerializeField] private GameObject pathPrefab;
@@ -27,6 +28,11 @@ public class VisualizarMatriz : MonoBehaviour
     private MapMatrix originalMap;
 
     private int numBolitas = 0;
+    private int StepsPerFrame;
+
+    private MovementChompMan chompManMovement;
+    
+    private float stepDistance;
 
     public MapMatrix Matriz { get => matriz; set => matriz = value; }
 
@@ -51,14 +57,23 @@ public class VisualizarMatriz : MonoBehaviour
 
         chompMan.SetActive(true);
         ghost.SetActive(true);
+        chompManMovement = chompMan.GetComponent<MovementChompMan>();
 
+        stepDistance = interval / AgentManager.instance.getStepsPerFrame();
 
     }
 
     private void Update()
     {
-        Draw();
+        //Draw();
         CheckBolitas();
+        Vector2 destination = new Vector2(chompManMovement.Position.y * interval, chompManMovement.Position.x * interval);
+        //Debug.Log(destination);
+        Vector2 direction = destination - new Vector2(chompMan.transform.position.x, chompMan.transform.position.y);
+        
+        //Debug.Log(new Vector2(chompMan.transform.position.x, chompMan.transform.position.y) + ";" + destination);
+        direction.Normalize();
+        chompMan.transform.Translate(stepDistance * direction.x, stepDistance * direction.y, 0);
     }
 
     private void ReadFile()
@@ -103,6 +118,7 @@ public class VisualizarMatriz : MonoBehaviour
 
     public void Draw()
     {
+        Debug.Log("Draw");
         //Debug.Log(matriz);
         numBolitas = 0;
         drawables.ForEach(d => Destroy(d));
@@ -124,6 +140,7 @@ public class VisualizarMatriz : MonoBehaviour
                 }
                 else if (matriz[i, j] == 5)
                 {
+                    //chompMan.transform.Translate(new Vector3(initialPosition.x + (j * interval), initialPosition.y + (i * interval), 0));
                     chompMan.transform.position = new Vector3(initialPosition.x + (j * interval), initialPosition.y + (i * interval), 0);
                 }
                 else if (matriz[i, j] == 3)
