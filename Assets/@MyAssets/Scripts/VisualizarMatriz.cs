@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using Unity.Barracuda;
 using UnityEngine;
 
 public class VisualizarMatriz : MonoBehaviour
@@ -33,6 +34,7 @@ public class VisualizarMatriz : MonoBehaviour
     private MovementChompMan chompManMovement;
     
     private float stepDistance;
+    private Vector2 LastDirection;
 
     public MapMatrix Matriz { get => matriz; set => matriz = value; }
 
@@ -74,6 +76,11 @@ public class VisualizarMatriz : MonoBehaviour
         //Debug.Log(new Vector2(chompMan.transform.position.x, chompMan.transform.position.y) + ";" + destination);
         direction.Normalize();
         chompMan.transform.Translate(stepDistance * direction.x, stepDistance * direction.y, 0);
+        rotateChompan(direction);
+
+
+
+
     }
 
     private void ReadFile()
@@ -177,5 +184,25 @@ public class VisualizarMatriz : MonoBehaviour
     public void Reset()
     {
         matriz = originalMap.hardCopy();
+    }
+
+    private void rotateChompan(Vector2 direction)
+    {
+        if(direction.x == 1 )
+        { 
+            chompMan.transform.rotation = Quaternion.Euler(0,0,0);
+        }
+        if (direction.x == -1)
+        {
+            chompMan.transform.rotation = Quaternion.Euler(0, 0, 180);
+        }
+        if (direction.y == 1)
+        {
+            chompMan.transform.rotation = Quaternion.Euler(0, 0, 90);
+        }
+        if (direction.y == -1)
+        {
+            chompMan.transform.rotation = Quaternion.Euler(0, 0, 270);
+        }
     }
 }
