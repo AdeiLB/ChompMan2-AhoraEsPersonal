@@ -53,7 +53,7 @@ public class AgentManager : MonoBehaviour
     public void GhostWin()
     {
         Debug.Log("Victoria de Fantasma");
-        ghostAgent.AddReward(100);
+        ghostAgent.AddReward(1000);
         chompManAgent.AddReward(-100);
         EndEpisodeGlobal();
     }

@@ -1,0 +1,69 @@
+{
+    "ChompMan": {
+        "checkpoints": [
+            {
+                "steps": 199998,
+                "file_path": "results\\32\\ChompMan\\ChompMan-199998.onnx",
+                "reward": -60.09999964137872,
+                "creation_time": 1748431175.8940508,
+                "auxillary_file_paths": [
+                    "results\\32\\ChompMan\\ChompMan-199998.pt"
+                ]
+            },
+            {
+                "steps": 252803,
+                "file_path": "results\\32\\ChompMan\\ChompMan-252803.onnx",
+                "reward": null,
+                "creation_time": 1748431436.4478488,
+                "auxillary_file_paths": [
+                    "results\\32\\ChompMan\\ChompMan-252803.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 252803,
+            "file_path": "results\\32\\ChompMan.onnx",
+            "reward": null,
+            "creation_time": 1748431436.4478488,
+            "auxillary_file_paths": [
+                "results\\32\\ChompMan\\ChompMan-252803.pt"
+            ]
+        }
+    },
+    "Ghost": {
+        "checkpoints": [
+            {
+                "steps": 199998,
+                "file_path": "results\\32\\Ghost\\Ghost-199998.onnx",
+                "reward": 9664.726210435232,
+                "creation_time": 1748431175.932534,
+                "auxillary_file_paths": [
+                    "results\\32\\Ghost\\Ghost-199998.pt"
+                ]
+            },
+            {
+                "steps": 252803,
+                "file_path": "results\\32\\Ghost\\Ghost-252803.onnx",
+                "reward": null,
+                "creation_time": 1748431436.4868522,
+                "auxillary_file_paths": [
+                    "results\\32\\Ghost\\Ghost-252803.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 252803,
+            "file_path": "results\\32\\Ghost.onnx",
+            "reward": null,
+            "creation_time": 1748431436.4868522,
+            "auxillary_file_paths": [
+                "results\\32\\Ghost\\Ghost-252803.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0",
+        "torch_version": "2.7.0+cpu"
+    }
+}

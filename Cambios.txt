@@ -8,8 +8,6 @@ Chomp-man intenta encadenar la mayor cantidad de bolitas posible, siempre sale a
 Cuando pacman el fantasma y pacman avanzan, y luego pacman va hacia atrás el fantasma cree que ha hecho algo mal porque recibe penalización negativa (minuto 28)
 Como le quitamos mucho por estar lejos de chom-man, una de las prioridades del fantasma se convierte en acabar lo antes posible, para reducir la penalización
 6. Spawn aleatorio (run 27)
+7. El punto de destino del fantasma se calcula cada 5 steps
 
 Ideas para implementar:
-Empezar en puntos aleatorios
-No hacer el a* cada step
-a* a veces falla

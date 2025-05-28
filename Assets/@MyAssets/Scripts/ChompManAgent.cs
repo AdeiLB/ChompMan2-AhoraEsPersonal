@@ -21,6 +21,7 @@ public class ChompManAgent : Agent
     public override void OnActionReceived(ActionBuffers actions)
     {
         this.AddReward(-0.1f);
+        Debug.Log(actions.DiscreteActions[0]);
         movement.MovementCheck(actions.DiscreteActions[0]);
     }
 
