@@ -8,7 +8,11 @@ public class AgentManager : MonoBehaviour
     [SerializeField] private Agent chompManAgent;
     [SerializeField] private Agent ghostAgent;
     [SerializeField] private VisualizarMatriz visualizarMatriz;
+    [SerializeField] private int stepsPerFrame;
     public static AgentManager instance;
+    public bool SlowMode;
+    private int counter = 0;
+
 
     public void Awake()
     {
@@ -19,6 +23,7 @@ public class AgentManager : MonoBehaviour
         {
             Destroy(this);
         }
+        Academy.Instance.AutomaticSteppingEnabled = !SlowMode;
     }
 
     private void Update()
@@ -27,6 +32,21 @@ public class AgentManager : MonoBehaviour
         {
             //EndEpisodeGlobal();
             OnEpisodeBeginGlobal();
+        }
+
+        if (SlowMode)
+        {
+            if (counter == stepsPerFrame)
+            {
+                visualizarMatriz.Draw();
+                Academy.Instance.EnvironmentStep();
+                counter = 0;
+            }
+            counter++;
+
+        } else
+        {
+            visualizarMatriz.Draw();
         }
     }
 
@@ -56,5 +76,10 @@ public class AgentManager : MonoBehaviour
         ghostAgent.AddReward(1000);
         chompManAgent.AddReward(-100);
         EndEpisodeGlobal();
+    }
+
+    public int getStepsPerFrame()
+    {
+        return stepsPerFrame;
     }
 }
