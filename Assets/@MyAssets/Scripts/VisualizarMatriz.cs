@@ -29,12 +29,10 @@ public class VisualizarMatriz : MonoBehaviour
     private MapMatrix originalMap;
 
     private int numBolitas = 0;
-    private int StepsPerFrame;
 
     private MovementChompMan chompManMovement;
     
     private float stepDistance;
-    private Vector2 LastDirection;
 
     public MapMatrix Matriz { get => matriz; set => matriz = value; }
 
@@ -75,8 +73,10 @@ public class VisualizarMatriz : MonoBehaviour
         
         //Debug.Log(new Vector2(chompMan.transform.position.x, chompMan.transform.position.y) + ";" + destination);
         direction.Normalize();
-        chompMan.transform.Translate(stepDistance * direction.x, stepDistance * direction.y, 0);
-        rotateChompan(direction);
+        //chompMan.transform.Translate(stepDistance * direction.x, stepDistance * direction.y, 0);
+        chompMan.transform.position = new Vector3(chompMan.transform.position.x + stepDistance * direction.x, chompMan.transform.position.y + stepDistance * direction.y, 0);
+        //chompMan.transform.Rotate(0, 0, 10);
+        
 
 
 
@@ -184,25 +184,5 @@ public class VisualizarMatriz : MonoBehaviour
     public void Reset()
     {
         matriz = originalMap.hardCopy();
-    }
-
-    private void rotateChompan(Vector2 direction)
-    {
-        if(direction.x == 1 )
-        { 
-            chompMan.transform.rotation = Quaternion.Euler(0,0,0);
-        }
-        if (direction.x == -1)
-        {
-            chompMan.transform.rotation = Quaternion.Euler(0, 0, 180);
-        }
-        if (direction.y == 1)
-        {
-            chompMan.transform.rotation = Quaternion.Euler(0, 0, 90);
-        }
-        if (direction.y == -1)
-        {
-            chompMan.transform.rotation = Quaternion.Euler(0, 0, 270);
-        }
     }
 }

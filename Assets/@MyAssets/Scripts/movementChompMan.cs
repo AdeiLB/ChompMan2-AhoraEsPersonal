@@ -13,30 +13,33 @@ public class MovementChompMan : Movement
 
     public override void Move(int movement)
     {
-        
         switch (movement)
         {
             case 1:
                 visualizarMatriz.Matriz.SetValue((int)position.x, (int)position.y, ((int)Casillas.Vacio));
                 this.position.x += 1;
+                transform.rotation = Quaternion.Euler(0, 0, 90);
                 visualizarMatriz.Matriz.SetValue((int)position.x, (int)position.y, ((int)Casillas.ChompMan));
                 break;
 
             case 2:
                 visualizarMatriz.Matriz.SetValue((int)position.x, (int)position.y, ((int)Casillas.Vacio));
                 this.position.y += 1;
+                transform.rotation = Quaternion.Euler(0, 0, 0);
                 visualizarMatriz.Matriz.SetValue((int)position.x, (int)position.y, ((int)Casillas.ChompMan));
                 break;
 
             case 3:
                 visualizarMatriz.Matriz.SetValue((int)position.x, (int)position.y, ((int)Casillas.Vacio));
                 this.position.x -= 1;
+                transform.rotation = Quaternion.Euler(0, 0, 270);
                 visualizarMatriz.Matriz.SetValue((int)position.x, (int)position.y, ((int)Casillas.ChompMan));
                 break;
 
             case 4:
                 visualizarMatriz.Matriz.SetValue((int)position.x, (int)position.y, ((int)Casillas.Vacio));
                 this.position.y -= 1;
+                transform.rotation = Quaternion.Euler(0, 0, 180);
                 visualizarMatriz.Matriz.SetValue((int)position.x, (int)position.y, ((int)Casillas.ChompMan));
                 break;
         }
@@ -83,5 +86,26 @@ public class MovementChompMan : Movement
         } while (visualizarMatriz.Matriz[(int)position.x, (int)position.y] != 2);
         //Debug.Log(matrix);
         visualizarMatriz.Matriz.SetValue(((int)position.x), ((int)position.y), ((int)Casillas.ChompMan));
+    }
+
+    private void rotate(Vector2 direction)
+    {
+        Debug.Log(direction);
+        if (direction.x == 1)
+        {
+            gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        if (direction.x == -1)
+        {
+            gameObject.transform.rotation = Quaternion.Euler(0, 0, 180);
+        }
+        if (direction.y == 1)
+        {
+            gameObject.transform.rotation = Quaternion.Euler(0, 0, 90);
+        }
+        if (direction.y == -1)
+        {
+            gameObject.transform.rotation = Quaternion.Euler(0, 0, 270);
+        }
     }
 }

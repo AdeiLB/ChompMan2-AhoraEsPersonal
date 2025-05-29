@@ -193,7 +193,7 @@ MonoBehaviour:
   chompManAgent: {fileID: 1039454516}
   ghostAgent: {fileID: 844144840}
   visualizarMatriz: {fileID: 292311974}
-  stepsPerFrame: 5
+  stepsPerFrame: 20
   SlowMode: 1
 --- !u!114 &292311977
 MonoBehaviour:
