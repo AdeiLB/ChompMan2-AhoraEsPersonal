@@ -403,6 +403,12 @@ MonoBehaviour:
   position: {x: 13, y: 9}
   originalPosition: {x: 0, y: 0}
   chompMan: {fileID: 1039454511}
+  render: {fileID: 844144835}
+  sprites:
+  - {fileID: 21300000, guid: c073ec1734a62354a97d2a90cda1f53e, type: 2}
+  - {fileID: 21300000, guid: a96d76ff97db5b94e992f9b29d4ae6ae, type: 2}
+  - {fileID: 21300000, guid: eaf3c514a923214409091424cca5c9ce, type: 2}
+  - {fileID: 21300000, guid: ca09eb4441deded4598b7f79b00cc0b2, type: 2}
 --- !u!114 &844144838
 MonoBehaviour:
   m_ObjectHideFlags: 0

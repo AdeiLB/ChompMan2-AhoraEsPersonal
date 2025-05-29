@@ -9,6 +9,8 @@ public class MovementGhost : Movement
     private int lastObject = ((int)Casillas.Bolita);
 
     [SerializeField] private GameObject chompMan;
+    [SerializeField] private SpriteRenderer render;
+    [SerializeField] private List<Sprite> sprites;
 
     public override void Move(int movement)
     {
@@ -19,6 +21,7 @@ public class MovementGhost : Movement
                 this.position.x += 1;
                 lastObject = visualizarMatriz.Matriz.GetValue((int)position.x, (int)position.y);
                 visualizarMatriz.Matriz.SetValue((int)position.x, (int)position.y, ((int)Casillas.Fantasma));
+                render.sprite = sprites[0];
                 break;
 
             case 2:
@@ -26,6 +29,7 @@ public class MovementGhost : Movement
                 this.position.y += 1;
                 lastObject = visualizarMatriz.Matriz.GetValue((int)position.x, (int)position.y);
                 visualizarMatriz.Matriz.SetValue((int)position.x, (int)position.y, ((int)Casillas.Fantasma));
+                render.sprite = sprites[1];
                 break;
 
             case 3:
@@ -33,6 +37,7 @@ public class MovementGhost : Movement
                 this.position.x -= 1;
                 lastObject = visualizarMatriz.Matriz.GetValue((int)position.x, (int)position.y);
                 visualizarMatriz.Matriz.SetValue((int)position.x, (int)position.y, ((int)Casillas.Fantasma));
+                render.sprite = sprites[2];
                 break;
 
             case 4:
@@ -40,6 +45,7 @@ public class MovementGhost : Movement
                 this.position.y -= 1;
                 lastObject = visualizarMatriz.Matriz.GetValue((int)position.x, (int)position.y);
                 visualizarMatriz.Matriz.SetValue((int)position.x, (int)position.y, ((int)Casillas.Fantasma));
+                render.sprite = sprites[3];
                 break;
         }
         Reaction(nextObject);
