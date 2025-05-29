@@ -31,7 +31,8 @@ public class VisualizarMatriz : MonoBehaviour
     private int numBolitas = 0;
 
     private MovementChompMan chompManMovement;
-    
+    private MovementGhost ghostMovement;
+
     private float stepDistance;
 
     public MapMatrix Matriz { get => matriz; set => matriz = value; }
@@ -58,6 +59,8 @@ public class VisualizarMatriz : MonoBehaviour
         chompMan.SetActive(true);
         ghost.SetActive(true);
         chompManMovement = chompMan.GetComponent<MovementChompMan>();
+        ghostMovement = ghost.GetComponent<MovementGhost>();
+
 
         stepDistance = interval / AgentManager.instance.getStepsPerFrame();
 
@@ -67,16 +70,18 @@ public class VisualizarMatriz : MonoBehaviour
     {
         //Draw();
         CheckBolitas();
+
+        //Chomp man interpolation
         Vector2 destination = new Vector2(chompManMovement.Position.y * interval, chompManMovement.Position.x * interval);
-        //Debug.Log(destination);
         Vector2 direction = destination - new Vector2(chompMan.transform.position.x, chompMan.transform.position.y);
-        
-        //Debug.Log(new Vector2(chompMan.transform.position.x, chompMan.transform.position.y) + ";" + destination);
         direction.Normalize();
-        //chompMan.transform.Translate(stepDistance * direction.x, stepDistance * direction.y, 0);
         chompMan.transform.position = new Vector3(chompMan.transform.position.x + stepDistance * direction.x, chompMan.transform.position.y + stepDistance * direction.y, 0);
-        //chompMan.transform.Rotate(0, 0, 10);
-        
+
+        //Ghost interpolation
+        destination = new Vector2(ghostMovement.Position.y * interval, ghostMovement.Position.x * interval);
+        direction = destination - new Vector2(ghost.transform.position.x, ghost.transform.position.y);
+        direction.Normalize();
+        ghost.transform.position = new Vector3(ghost.transform.position.x + stepDistance * direction.x, ghost.transform.position.y + stepDistance * direction.y, 0);
 
 
 
@@ -156,6 +161,8 @@ public class VisualizarMatriz : MonoBehaviour
                     if (ghost.GetComponent<MovementGhost>().IsOverPellet())
                     {
                         numBolitas++;
+                        GameObject go = Instantiate(bolitaPrefab, new Vector3(initialPosition.x + (j * interval), initialPosition.y + (i * interval), 0), Quaternion.identity);
+                        drawables.Add(go);
                     }
                 }
             }

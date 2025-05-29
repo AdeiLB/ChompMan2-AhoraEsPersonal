@@ -88,24 +88,5 @@ public class MovementChompMan : Movement
         visualizarMatriz.Matriz.SetValue(((int)position.x), ((int)position.y), ((int)Casillas.ChompMan));
     }
 
-    private void rotate(Vector2 direction)
-    {
-        Debug.Log(direction);
-        if (direction.x == 1)
-        {
-            gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
-        if (direction.x == -1)
-        {
-            gameObject.transform.rotation = Quaternion.Euler(0, 0, 180);
-        }
-        if (direction.y == 1)
-        {
-            gameObject.transform.rotation = Quaternion.Euler(0, 0, 90);
-        }
-        if (direction.y == -1)
-        {
-            gameObject.transform.rotation = Quaternion.Euler(0, 0, 270);
-        }
-    }
+    
 }
